@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=di, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#container{
+			width:100%;
+			height:700px;
+			background-color: coral;
+			display:flex;
+			/* With above property all my div tags are alligned horrizontally */
+			/* By default flex direction is row */
+			gap: 10px;
+			flex-direction: column;
+			/* Now all my div tags are alligned vertically */
+
+		}
+		#container>div{
+			height:150px;
+			width:150px;
+			border:2px solid blue;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>
