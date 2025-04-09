@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Display properties in css</title>
+	<style>
+			#block{
+				width:80%;
+				border:2px solid green;
+				display:block;
+
+			}
+			#inline{
+				display:inline;
+				width:80%;
+				border:2px solid blue;
+				padding: 3px;
+				margin:5px;
+
+			}
+			.inline-block{
+				display:inline-block;
+				width:90%;
+				border:2px solid brown;
+				padding:20px;
+			}
+			#none{
+				display:none;
+			}
+
+
+
+
+	</style>
+	
+</head>
+<body>
+	<main>
+		<div>
+			<h1 id="block">I am a block level element</h1>
+
+
+		</div>
+		<div>
+			<span id="inline">This is inline span elemnent</span>
+			<span id="block">This is inline span with display: block;</span>
+		</div>
+		<div>
+			<p class="inline-block">small paragraph in inline-block</p>
+			<span class="inline-block">Inline block span element</span>
+		</div>
+		<div>
+			<p id="none">This is none display element</p>
+			<button>none</button>
+		</div>
+	</main>
+	
+</body>
+</html>
