@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flex layout</title>
+	<style>
+            section{
+				width:100%;
+				display:flex;
+				gap:20px;
+				justify-content: space-around;
+				background-color: rgb(227, 230, 233);
+			}
+			img{
+			height: 180px;
+			width: 200px;
+		  }
+		  .one{
+			width:50%;
+			height:100vh;
+			background-color: rgb(247, 246, 244);
+			margin-top: 20px;
+			margin-left: 10px;
+			margin-right: 10px;;
+			display:flex;
+			gap:20px;
+			flex-wrap: wrap;
+			justify-content:space-evenly;}
+ /* .one div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} */
+.one > div {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+ h1 {
+  width: 100%;
+  margin: 0 0 10px 0;
+  font-size:xx-large;
+}
+.link {
+  margin-top: 10px;
+  display: flex;
+  color: teal;
+  font-weight: bold;
+  text-decoration: none;
+}
+img+p{
+	font-size: medium;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+
+	</style>
+</head>
+<body>
+	<section>
+		<div class="one">
+			<h1>Revamp your home in style </h1>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>			<a href="#" class="link">Explore all</a>
+			</div>		</div>
+		<div class="one">
+			<h1>Starting ₹149 | Headphones</h1>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>
+				<img src="https://images.meesho.com/images/products/410688242/fioi6_1200.jpg" alt="cushion covers">
+				<p>cushion covers,bedsheets & more</p>
+			</div>
+			<div>			<a href="#" class="link">See all Offers</a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
