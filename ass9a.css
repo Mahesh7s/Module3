@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+	/* change display to flex so that three boxes align horizontaly */
+    /* To make three boxes horizontaly, change position in .box to relative */
+
+	padding: 10px;
+	justify-content: center;
+	/* justify-content to center so tha boxes will appaer in center of the page */
+
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: lightblue;
+    border: 1px solid black;
+    margin: 10px;
+    position: relative;
+	/* changing position to relative */
+	display:flex;
+	/* applying display flex so that items in boxes allign */
+	/* by applying justify-content and aign-items */
+	justify-content: center;
+	align-items:center;
+}
+
+.text {
+    position: relative;
+	/* change the position from fixed to relative */
+    left: 50%;
+    top: 0%;
+}
