@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+           #container{
+			width:60%;
+			height:50vh;
+			border:2px solid rgb(246, 246, 246);
+			border-radius: 2%;
+			margin:auto;
+			margin-top:5%;
+		    display:grid;
+			padding:10px;
+			gap:20px;
+			grid-template-columns: repeat(4,1fr);
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			/* justify-content:space-around;
+			align-items:center;
+		   } */
+		   }
+
+		   #container>div{
+			border:2px solid none;
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			border-radius:10px;
+			font-weight:900;
+			display:flex;
+			padding:15px;
+			justify-content: center;
+			align-items:center;
+			
+
+		   }
+		   #empty{
+			grid-column:1/span 4;
+			height:30px;
+			
+
+		   }
+		   .one{
+			background-color: black;
+			color:white;
+			font-weight: bolder;
+
+			
+		   }
+		   h1{
+			color:cadetblue;
+			text-align: center;
+		   }
+		   #cc{
+			background-color: rgb(233, 51, 36);
+		   }
+
+	</style>
+</head>
+<body>
+	<h1>Masai Calculator</h1>
+	<div id="container">
+		
+		<div id=empty></div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div class="one">+</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div class="one">-</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+		<div class="one">x</div>
+		<div id="cc">C</div>
+		<div>0</div>
+		<div class="one">=</div>
+		<div class="one">/</div>
+	</div>
+</body>
+</html>
