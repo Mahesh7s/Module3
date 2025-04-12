@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<style>
+	#box{
+		display:grid;
+		width:50%;
+		height:60vh;
+		background-color: cadetblue;
+		/* grid-template-columns: repeat(3,1fr); */
+		gap:20px;
+		padding:20px;
+		margin: auto;
+		grid-template-areas: " c1 c1 c4"
+		                     " c2 c3 c4 ";
+	
+
+	}
+	#box>div{
+		border:2px solid;
+		display:flex;
+		justify-content:center;
+		align-items: center;
+	}
+	#box>div:nth-child(1){
+		background-color: rgb(243, 148, 5);
+		grid-area: c1;
+	}
+	#box>div:nth-child(2){
+		background-color: rgb(17, 0, 255);
+		grid-area: c2;
+	}
+	#box>div:nth-child(3){
+		background-color: rgb(74, 40, 3);
+		grid-area: c3;
+	}
+	#box>div:nth-child(4){
+		background-color: rgb(41, 196, 7);
+		grid-area: c4;
+	}
+
+
+
+</style>
+
+</head>
+<body>
+	<div id="box">
+		<div>1</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+	</div>
+</body>
+</html>
