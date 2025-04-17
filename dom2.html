@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>list-item1</li>
+		<li>list-item2</li>
+		<li>list-item3</li>
+	</ul>
+	<button id="add"> Add More</button>
+	
+</body>
+<script>
+		let ul=document.querySelector('ul');
+
+	let btn=document.getElementById("add")
+	btn.addEventListener("click",()=>{
+	let count=ul.getElementsByTagName("li").length+1;
+    let nitem=document.createElement('li')
+	nitem.innerText="list-item"+count
+	if(count%2!=0){
+		nitem.style.color="blue"
+		nitem.style.fontWeight="bold"
+	}else{
+		nitem.style.color="red"
+		nitem.style.fontStyle="italic"
+	}
+	ul.appendChild(nitem)
+
+	})
+
+
+	
+</script>
+</html>
