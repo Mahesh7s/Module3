@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#one{
+			width:200px;
+			height:150px;
+			background-color: aqua;
+			padding:20px;
+			margin:auto;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		#form{
+			margin: auto;
+			width:300px;
+			display:flex;
+			flex-direction: column;
+			gap:20px;
+		}
+		#back,#update{
+			width:50%;
+			padding:5px;
+		}
+	</style>
+</head>
+<body>
+
+
+	<div id="one">This is initial text in div</div>
+	<!-- creating input fields for entering color and text -->
+	<div id="form">
+	<label for="color">Enter a color name:</label>
+	<input type="text" id="color">
+	<label for="context">Entersome text:</label>
+	<input type="text" id="context">
+	<!-- buttons for cjanging background and updating text -->
+	<button id="back">Change Background</button>
+	<button id="update">Update Text</button>
+	</div>
+
+	
+</body>
+<script>
+	// assigning the eleents of button and div into variables
+   let back=document.getElementById("back")
+   let update=document.getElementById("update")
+   let div=document.getElementById("one")
+   //function to check whether a color is valid or not
+function isValid(color){
+	let div1=document.createElement("p")
+	div1.style.color=color;
+	return div1.style.color!==""
+}
+	// function to change back-ground color of a div
+   back.addEventListener("click",()=>{
+	// getting the input color value into coloor variable
+	let coloor=document.getElementById("color").value
+
+	if(isValid(coloor)){
+		div.style.backgroundColor=coloor
+		//if color is valid, change the bg color
+	}else{
+		alert("Enter a valid color name");
+		//if not valid,popping alert message
+	}
+   })
+   update.addEventListener("click",()=>{
+	//getting text context into text variable
+	let text=document.getElementById("context").value
+
+	if(text.trim()!==""){
+		//if text is not empty then updating the text
+		div.innerText=text;
+	}else{
+		//if text is empty showing alert message
+		alert("Please enter valid text")
+	}
+
+   })
+
+
+
+
+
+</script>
+</html>
