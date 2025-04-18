@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body>div:nth-of-type(1){
+			width:300px;
+			height:250px;
+			background-color: aqua;
+			margin:auto;
+			display:flex;
+			justify-content: center;
+			text-align:center;
+			color:black;
+			flex-wrap:wrap;
+		}
+		div{
+			
+			margin:auto;
+			width:50%;
+			padding:20px;
+			/* background-color: bisque; */
+			color:white;
+			display:flex;
+			justify-content: space-between;
+			margin-top:10px;
+			
+		}
+		button{
+			padding:5px;
+			border:2px solid none;
+			border-radius:10px;
+			color:violet;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<!-- creating div  -->
+	<div>
+            Initial text
+	</div>
+	<div>
+		<!-- buttons to add and remove text with id's -->
+		<button id="add">Add Paragraph</button>
+		<button id="remove">Remove Paragraph</button>
+	
+	</div>
+	
+</body>
+<script>
+	// getting the div and button elements into variables
+
+	let div=document.querySelector("body>div:nth-of-type(1)")
+	let add=document.getElementById("add")
+	let remove=document.getElementById("remove")
+	let count=1;
+	// adding event listener to add paragraph
+    add.addEventListener("click",()=>{
+		
+		let p=document.createElement("p")
+		//creating a new P element
+		p.innerText="This is New Paragraph"+count;
+		count++
+		div.appendChild(p)
+		//appending the child to parent
+	})
+	remove.addEventListener("click",()=>{
+		div.removeChild(div.lastChild)
+		//removing the last added paragraph 
+	})
+	
+
+
+</script>
+</html>
