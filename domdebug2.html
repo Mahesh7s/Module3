@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task List</title>
+</head>
+<body>
+  <input id="taskInput" type="text" placeholder="Enter task">
+  <button id="addTask">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    const addTaskButton = document.getElementById('addTask');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    addTaskButton.onclick = function () {
+      const taskText = taskInput.value;
+      const newTask = document.createElement('li');
+      newTask.innerText = taskText;
+      taskList.appendChild(newTask); // changing method from append to appendChild()
+    };
+
+    taskList.onclick = function (e) {
+      if (e.target.tagName === 'LI') {
+        e.target.remove(); // corrected the  condition and is object of event
+
+      }
+    };
+  </script>
+</body>
+</html>
+
+
+	
+</body>
+</html>
