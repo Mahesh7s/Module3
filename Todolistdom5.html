@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To do List</title>
+	<style>
+		#container{
+			width:85%;
+			height:100vh;
+			background-color: chocolate;
+			margin:auto;
+
+		}
+		h1{
+			text-align:center;
+			padding:10px;
+		}
+		#li{
+			margin:auto;
+			background-color: aqua;
+			width:70%;
+			padding:20px;
+			display:flex;
+			justify-content:center;
+			gap:10px;
+
+			
+		}
+		#ok{
+			margin:auto;
+			width:30%;
+			/* border:2px solid; */
+			display:flex;
+			justify-content:space-evenly;
+			/* height:200px; */
+			/* flex-direction: column; */
+			/* flex-wrap:wrap; */
+		}
+		li{
+			display:flex;
+			gap:20px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="container">
+		<h1>To-Do List:</h1>
+        <div id="li">
+		<label for="task">Enter a Task:</label>
+		<input type="text" id="task">
+		<button id="add">Add Task</button>
+	</div>
+	<div id="ok"><ul id="list"></ul></div>
+</div>
+</body>
+<script>
+let val=document.getElementById("task");
+let add=document.getElementById("add")
+let ul=document.getElementById("list")
+
+add.addEventListener("click",()=>{
+	let valu=val.value.trim()
+ let li=document.createElement("li")
+ let completed=document.createElement("button")
+ completed.innerText="Completed"
+ if (valu==="") {
+        alert("Please enter a  valid task!");
+        return;
+      }
+	  else{
+		li.innerText=valu;
+	  }
+ 
+let delet=document.createElement("button")
+ delet.innerText="Remove Task";
+completed.addEventListener("click",()=>{
+	li.style.textDecoration="line-through"
+})
+
+delet.addEventListener("click",(e)=>{
+	li.remove()
+	completed.remove()
+	delet.remove()
+})
+
+
+
+ ul.append(li,completed,delet)
+
+
+})
+
+
+
+</script>
+</html>
