@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<textarea name="notes" id="notes" rows="10" cols="20" placeholder="Enter your notes here..."></textarea>
+	<button id="load">Load Notes</button>
+	<button id="clear">Clear Notes</button>
+	
+</body>
+</html>
+<script>
+
+  //Load any saved notes when the page loads
+  window.addEventListener("load", () => {
+    const savedNotes = localStorage.getItem("notes");
+    if (savedNotes) {
+      document.getElementById("notes").value = savedNotes;
+    }
+  });
+
+  const textarea = document.getElementById("notes");
+  const loadBtn = document.getElementById("load");
+  const clearBtn = document.getElementById("clear");
+
+  // Save notes to localStorage
+  loadBtn.addEventListener("click", () => {
+    const text = textarea.value.trim();
+    if (text === "") {
+      alert("Please enter some notes before saving.");
+    } else {
+      localStorage.setItem("notes", text);
+    }
+  });
+
+  // Clear notes from localStorage and textarea
+  clearBtn.addEventListener("click", () => {
+    localStorage.removeItem("notes");
+    textarea.value = "";
+    alert("Notes cleared.");
+  });
+
+
+
+</script>
