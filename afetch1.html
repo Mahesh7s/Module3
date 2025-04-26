@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	
+</body>
+<script>
+	let body=document.getElementsByTagName("body")[0];
+ window.addEventListener("load",()=>{
+              showdata();
+ })
+
+ async function showdata(){
+	try{
+		let res= await fetch("https://jsonplaceholder.typicode.com/users")
+		let rep= await res.json()
+		let ul = document.createElement("ul");
+
+			for (let i = 0; i < rep.length; i++) {
+				let name = rep[i].name;
+				let email = rep[i].email;
+
+				let li = document.createElement("li");
+				li.innerText = name;
+
+				// Add event listener to the <li> element
+				li.addEventListener("click", () => {
+					alert(email);
+				});
+
+				ul.appendChild(li);
+
+				//console.log(name, email);
+			}
+
+			body.appendChild(ul);
+
+		}
+		catch(erroe){
+		console.log(erroe)
+	}
+ }
+
+</script>
+</html>
