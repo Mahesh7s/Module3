@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.one{
+			display:flex;
+			flex-direction: column;
+			width:50%;
+			/* justify-content: space-between; */
+			align-items: center;
+			margin:auto;
+			gap:10px;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<input type="text" id="title" placeholder="Enter the title..">
+	<input type="text" id="details" placeholder="Enter the info...">
+	<button id="submit">Submit</button>
+	</div>
+	<div class="one">
+
+	</div>
+</body>
+<script>
+	let submit=document.getElementById("submit");
+	submit.addEventListener("click",()=>{
+		display()
+	})
+    
+	async function display(){
+		try{
+         
+			let title=document.getElementById("title").value
+			let details=document.getElementById("details").value
+			if(title.trim()!=="" && details.trim()!=="")
+		{
+		    let res= await fetch("https://jsonplaceholder.typicode.com/posts", {
+				method:"POST",
+				headers:{
+					"Content-Type": "application/json"
+				},
+				body:JSON.stringify({ title: title, body: details })
+
+
+			});
+
+			let dat=await res.json()
+			let secondElement = document.getElementsByClassName('one')[1];
+			let h=document.createElement("h4")
+			let p=document.createElement("p")
+			let h5=document.createElement("h5")
+			h.innerText=dat.title;
+			p.innerText=dat.body;
+			h5.innerText=dat.id;
+			secondElement.appendChild(h)
+			secondElement.appendChild(p)
+			secondElement.appendChild(h5)
+
+		}
+			//console.log(title,details)
+			else alert("Enter valid details")
+
+
+		}
+		catch(error){
+			console.log(error)
+		}
+
+	}
+
+
+
+</script>
+</html>
