@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recepies</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+	<style>
+		body{
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			padding:5px;
+		}
+		.container{
+			width:95%;
+			/* border: 2px solid blue; */
+			margin:auto;
+			background-color: burlywood;
+		}
+		h1{
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+		}
+		nav{
+			display:flex;
+			justify-content: space-around;
+			background-color: aliceblue;
+			padding:10px;
+		}
+		a{
+			padding:5px;
+			border-radius: 10px;
+		}
+		a:hover{
+			color:rgb(231, 249, 235);
+			cursor: pointer;
+			background-color: brown;
+		
+			
+		}
+		#dish{
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			gap:10px;
+		}
+		#di{
+			margin:auto;
+		}
+	form>div{
+		display:flex;
+		/* flex-direction: column; */
+		justify-content: start;
+		align-items: center;
+		/* gap:5%; */
+		/* padding:2%; */
+	}
+	input{
+		width:50%;
+	height:20px;
+	margin:2%;
+	}
+	textarea{
+		width:50%;
+		margin:2%;
+	}
+	select{
+		width:20%;
+		margin:3%;
+	}
+	button{
+		margin-left:40%;
+		width:17%;
+		color:white;
+		background-color: brown;
+		margin-bottom: 20%;
+		border-radius: 30px;
+		font-weight: bold;
+	}
+	button::after{
+		background-color: blueviolet;
+	}
+		
+
+	</style>
+</head>
+<body>
+     <div class="container">
+		<header>
+			<h1>GREAT RECEIPIES.......</h1>
+			<nav>
+				<a href="./index.html">HOME</a>
+				<a href="./add.html">ADD RECEIPE</a>
+				<a href="./view.html">VIEW RECEIPES</a>
+			</nav>
+		</header>
+
+		<section>
+			<div id="dish">
+				<h2>Add Your Receipe</h2>
+				<span class="material-symbols-outlined">
+					lunch_dining
+					</span>
+			</div>
+			<div id="di">
+				<form 
+			action="" method="post" >
+				<div class="fom">
+					<label for="name">Enter Receipe name:</label>
+					<input type="text" required id="name">
+				</div>
+				<div class="fom">
+					<label for="ingredients">Enter the ingredients:</label>
+					<textarea name="ingredients" id="ingredients" required rows="10" cols="100"></textarea>
+				</div>
+				<div class="fom">
+					<label for="category">Select Receipe category:</label>
+					<select name="category" id="category" required>
+						<option value="breakfast">Breakfast</option>
+						<option value="lunch">Lunch</option>
+						<option value="dinner">Dinner</option>
+						<option value="dessert">Dessert</option>
+						<option value="drinks">Drinks</option>
+					</select>
+				</div>
+				<div class="fom">
+					<label for="steps">How to prepare it:</label>
+					<textarea name="steps" id="steps" required rows="10" cols="100"></textarea>
+				</div>
+				<div class="fom">
+					<button>Submit</button>
+				</div>
+			</form>
+			</div>
+			
+		</section>
+
+	 </div>
+
+
+
+
+	
+</body>
+</html>
