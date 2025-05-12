@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Grid Viewer</title>
+	<style>
+        body{
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+		}
+		input,select{
+			width:300px;
+			padding:10px;
+			margin-bottom: 50px;
+		}
+		#grid-container{
+   
+			width:90%;
+			/* border:2px solid; */
+			margin:auto;
+			display:grid;
+			grid-template-columns: repeat(3,1fr);
+			justify-content: center;
+			align-items: center;
+			gap:20px;
+			
+		}
+		.card{
+
+			border:2px solid;
+			min-width:40%;
+			max-width:80%;
+			text-align: center;
+			padding:10px;
+		}
+		#page{
+			display:flex;
+			align-items: center;
+			justify-content: center;
+		}
+		button{
+			margin:10px;
+			padding:10px;
+			background-color: brown;
+			color:white;
+			cursor: pointer;
+			border:none;
+		}
+		h1{
+			text-align:center;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Grid Viewer</h1>
+	<input type="text" id="search" placeholder="Search here...">
+
+	<select name="sorting" id="sort-value">
+		<option value="name-asc">Name Asc</option>
+		<option value="name-desc">Name Dsc</option>
+		<option value="city-asc">City Dsc</option>
+	</select>
+	<div id="grid-container"></div>
+
+	<div id="page">
+		<button id="prev">Prev</button>
+		<p id="num">Page:</p>
+		<button id="next">Next</button>
+	</div>
+	
+
+	
+</body>
+<script>
+	let currentPage=1;
+	let itemsperPage=5;
+ let data=[]
+ async function fetchdata(){
+	let res = await fetch("https://jsonplaceholder.typicode.com/users")
+	let daa = await res.json()
+	return daa
+
+ }
+   display(data)
+   //console.log(data)
+ 
+	async function display(dataa){
+	let dat = dataa.length>0?dataa: await fetchdata()
+	let div = document.getElementById("grid-container")
+	let start = (currentPage-1)*itemsperPage;
+	let end= start+itemsperPage;
+	let data= dat.slice(start,end)
+	document.getElementById("num").innerText=`Page:${currentPage}`
+	div.innerHTML=""
+	data.forEach(element=>{
+		let card = document.createElement("div")
+		card.className="card"
+		card.innerHTML=`
+		<h3>TITLE: ${element.name}</h3>
+	<p>Email:${element.email}</p>
+	<p>City:${element.address.city}</p>
+	<p>Company:${element.company.name}</p>
+		`
+		//console.log(element.name)
+		div.appendChild(card)
+	})
+ }
+   
+
+
+
+document.getElementById("search").addEventListener("input",async ()=>{
+	let val = document.getElementById("search").value.trim()
+	let data = await fetchdata()
+	let res=[]
+	res = data.filter(item=>{
+		return item.name.includes(val) || item.email.includes(val)
+	})
+	display(res)
+	// document.getElementById("sort-value").addEventListener("change",()=>{
+	// 	let sortvalue = document.getElementById("sort-value").value
+	// let sortdata=[]
+	// if(sortvalue==="name-asc"){
+	// 	console.log("hiii")
+		
+	// }else if(sortvalue==="name-dsc"){
+    //        console.log("Bye")
+	// }else{
+		
+	// }
+	// })
+})
+
+document.getElementById("prev").addEventListener("click",()=>{
+	if(currentPage===1){
+		alert("No data")
+	}else{
+		currentPage--
+		display(data)
+	}
+})
+document.getElementById("next").addEventListener("click",()=>{
+	if(currentPage>=2){
+		alert("No data")
+	}else{
+		currentPage++
+		display(data)
+	}
+})
+
+
+
+fetchdata()
+</script>
+
+</html>
