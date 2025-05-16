@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dupliacte Code</title>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+	<div id="root">
+		this is dom heading
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+	
+const plans = [
+  {
+    name: "Starter",
+    price: "Free",
+    features: ["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]
+  },
+  {
+    name: "Lorem Plus",
+    price: "$32.00",
+    features: ["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]
+  },
+  {
+    name: "Lorem Pro",
+    price: "$50.00",
+    features: ["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]
+  }
+];
+
+// ✅ 1. Header Component
+function Header() {
+  return (
+    <div style={styles.header}>
+      <h1>
+        The Right Plan for <br />
+        <span style={{ color: "#a78bfa" }}>Your Business</span>
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quod in iure
+        vero. Facilis magnam, sed officiis commodi labore odit.
+      </p>
+    </div>
+  );
+}
+
+// ✅ 2. FeatureItem Component
+function FeatureItem({ text }) {
+  return (
+    <li style={styles.feature}>
+      <span style={styles.check}>✅</span> {text}
+    </li>
+  );
+}
+
+// ✅ 3. PlanCard Component
+function PlanCard({ name, price, features }) {
+  return (
+    <div style={styles.card}>
+      <div style={styles.left}>
+        <h3 style={styles.planName}>{name}</h3>
+        <ul style={styles.featureList}>
+          {features.map((f, i) => (
+            <FeatureItem key={i} text={f} />
+          ))}
+        </ul>
+      </div>
+      <div style={styles.right}>
+        <p style={styles.price}>{price}</p>
+        <button style={styles.button}>Get Started</button>
+      </div>
+    </div>
+  );
+}
+
+// ✅ 4. PlanList Component
+function PlanList() {
+  return (
+    <div>
+      {plans.map((plan, idx) => (
+        <PlanCard key={idx} {...plan} />
+      ))}
+    </div>
+  );
+}
+
+// ✅ 5. App Component
+function App() {
+  return (
+    <div style={styles.container}>
+      <Header />
+      <hr />
+      <PlanList />
+    </div>
+  );
+}
+
+// ✅ Styling
+const styles = {
+  container: {
+    fontFamily: "Arial, sans-serif",
+    padding: "20px",
+    maxWidth: "900px",
+    margin: "auto"
+  },
+  header: {
+    textAlign: "center",
+    marginBottom: "40px"
+  },
+  card: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "20px",
+    borderBottom: "1px solid #eee"
+  },
+  left: {
+    flex: 1
+  },
+  right: {
+    textAlign: "right"
+  },
+  planName: {
+    fontWeight: "bold",
+    fontSize: "18px",
+    marginBottom: "10px"
+  },
+  featureList: {
+    listStyle: "none",
+    padding: 0,
+    margin: 0
+  },
+  feature: {
+    marginBottom: "8px",
+    fontSize: "14px"
+  },
+  check: {
+    color: "green",
+    marginRight: "8px"
+  },
+  price: {
+    fontWeight: "bold",
+    fontSize: "20px",
+    marginBottom: "10px"
+  },
+  button: {
+    backgroundColor: "#a78bfa",
+    border: "none",
+    padding: "10px 20px",
+    borderRadius: "8px",
+    color: "#fff",
+    fontWeight: "bold",
+    cursor: "pointer"
+  }
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+  
+</script>
+
+
+</html>
