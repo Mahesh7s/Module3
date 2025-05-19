@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+	<div id="root">
+		this is dom heading
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+let root = ReactDOM.createRoot(document.getElementById("root"))
+	
+function Todoapp(){
+			let [listdata,setListdata] = React.useState(["Buy Milk","Study React"])
+            let[newItem,setItem] = React.useState("") 
+
+			 function addTask(e){
+				e.preventDefault();
+                       if(newItem.trim()=="") return alert("Enter valid Task")
+					   setListdata([...listdata,newItem]);
+					   setItem("");
+			 }
+			 function clearTask(){
+				setListdata([])
+			 }
+		return(
+			<>
+			<input type="text" value={newItem} onChange={(e)=>setItem(e.target.value)} placeholder="Add a new Task:"/>
+			<button onClick={addTask}>Add Task</button>
+            <button onClick={clearTask}>Clear Teasks</button>
+			<ul>{listdata.length==0 ?(
+				<p>No tasks avilable</p>
+			):(
+				listdata.map((item,idx)=>(
+					<li key={idx}>{item}</li>
+				))
+			)}</ul>
+			</>
+		)
+	}
+
+	
+  root.render(<Todoapp/>)
+</script>
+
+
+</html>
