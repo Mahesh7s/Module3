@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+	<div id="root">
+		<h1>Simple Counter app</h1>this is dom heading
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+	let root =ReactDOM.createRoot(document.getElementById("root"))
+
+	function Counter(){
+		let [count,setCount] = React.useState(0)
+		function increment(){
+			if(count<10) setCount(count+1)
+	
+		}
+		function decrement(){
+			if(count>0) setCount(count-1)
+		}
+		function reset(){
+			setCount(0)
+		}
+
+		return(
+			<>
+			<h1>Simple Counter App By Using React</h1>
+			<h3>Count:{count}</h3>
+			{count === 10 && <p>The Goal is Reached</p>}
+			<button onClick={increment}>Increment</button>
+			<button onClick={decrement}>Decrement</button>
+			<button onClick={reset}>Reset</button>
+
+			</>
+		)
+
+	}
+
+  root.render(<Counter/>)
+</script>
+
+
+</html>
