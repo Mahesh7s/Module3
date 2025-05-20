@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+	<div id="root">
+		this is dom heading
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+	let root =ReactDOM.createRoot(document.getElementById("root"))
+	function Attendance(){
+		let [students,setStudents]=React.useState([{id:1,name:"Mahesh",present:true},
+		    {id:2,name:"Anand",present:true},
+			{id:3,name:"Neel",present:false},
+			{id:4,name:"Afika",present:true},
+			{id:5,name:"Dhar",present:false}
+		])
+		let [student,setNewStudent]=React.useState({
+			name:"",
+			id:"",
+			present:""
+		})
+		const [filter, setFilter] = React.useState("All");
+
+		
+        
+
+		function changeAttendance(id){
+			setStudents(prev=>prev.map(student=>student.id===id?{...student,present:!student.present}:student))
+
+		}
+		function handleChange(e){
+
+			//console.log(e)
+			const {name,value} = e.target
+			setNewStudent({...student, [name]: /*name === "present" ? value === "true" :*/ value })
+
+		}
+		function add(){
+			let news={
+				...student,
+				present:student.present==="true"
+			}
+			setStudents([...students,/*student*/news])
+			setNewStudent({
+			name:"",
+			id:"",
+			present:""
+		})
+
+		}
+
+		let  filteredStudents = students.filter((student) => {
+  if (filter === "All") return true;
+  if (filter === "Present") return student.present === true;
+  if (filter === "Absent") return student.present === false;
+});
+
+
+		return(
+			<>
+			<h1>Students Attendance:</h1>
+            <input type="text" placeholder="Enter Student Name:" value={student.name} name="name" onChange={handleChange}/><br/>
+			<input type="text" placeholder="Enter Student Id:" value={student.id} onChange={handleChange} name="id"/><br/>
+		    
+				<label>
+  <input
+    type="radio"
+    name="present"
+    value={true}
+    checked={student.present === "true"}
+    onChange={handleChange}
+  />
+  Present
+</label>
+<label>
+  <input
+    type="radio"
+    name="present"
+    value={false}
+    checked={student.present === "false"}
+    onChange={handleChange}
+  />
+  Absent
+</label>
+
+
+			<br/>
+			<select value={filter} onChange={(e) => setFilter(e.target.value)}>
+  <option value="All">All</option>
+  <option value="Present">Present</option>
+  <option value="Absent">Absent</option>
+</select>
+
+			<button onClick={add}>Add</button>
+			<ul>{filteredStudents.map((student,idx)=>(
+				<>
+				<li style={{ color: student.present ? "green" : "red" }} key={idx}>{student.name} is {student.present?"PRESENT":"Absent"}</li>
+				<button onClick={()=>changeAttendance(student.id)}>Mark as {student.present?"Absent":"Present"}</button>
+				</>
+			))}</ul>
+			</>
+		)
+	}
+	root.render(<Attendance/>)
+  
+</script>
+
+
+</html>
