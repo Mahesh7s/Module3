@@ -22,16 +22,20 @@
 		let {useState} = React;
 		const [loading, setLoading] = useState(false);
 		const [error, setError] = useState(null);
+		const [hasFetched, setHasFetched] = useState(false);
 
 		async function fetchData(){
 				setLoading(true);
     setError(null);
+	 setHasFetched(false)
 
         try{
               let res =  await axios.get("https://fakestoreapi.com/products")
 			  console.log(res.data)
+			  setHasFetched(true);
 		}catch(err){
 			setError(err.message)
+			setHasFetched(true);
 		}
 		finally {
       setLoading(false);
@@ -43,9 +47,9 @@
 			<button onClick={fetchData} style={{padding:"10px", borderRadius:"10px",color:"white",backgroundColor:"blue"}}>FetchData</button>
 			{loading
   ? <p className="text-yellow-500">Loading...</p>
-  : error
+  : !hasFetched && error
     ? <p className="text-red-500">Error: {error}</p>
-    : <p className="text-green-500">Data fetched successfully!</p>
+    : hasFetched && !error?<p className="text-green-500">Data fetched successfully!</p>:""
 }
 
 			</>
