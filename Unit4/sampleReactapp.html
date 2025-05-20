@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+
+</head>
+<body>
+	<div id="root">
+		this is dom heading
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+	let root = ReactDOM.createRoot(document.getElementById("root"));
+	function App(){
+		let {useState} = React;
+		const [loading, setLoading] = useState(false);
+		const [error, setError] = useState(null);
+
+		async function fetchData(){
+				setLoading(true);
+    setError(null);
+
+        try{
+              let res =  await axios.get("https://fakestoreapi.com/products")
+			  console.log(res.data)
+		}catch(err){
+			setError(err.message)
+		}
+		finally {
+      setLoading(false);
+    }
+		}
+           return(
+			<>
+			<h1>Sample React App</h1>
+			<button onClick={fetchData} style={{padding:"10px", borderRadius:"10px",color:"white",backgroundColor:"blue"}}>FetchData</button>
+			{loading
+  ? <p className="text-yellow-500">Loading...</p>
+  : error
+    ? <p className="text-red-500">Error: {error}</p>
+    : <p className="text-green-500">Data fetched successfully!</p>
+}
+
+			</>
+		   )
+	}
+
+  root.render(<App/>)
+</script>
+
+
+</html>
