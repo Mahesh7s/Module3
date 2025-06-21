@@ -24,6 +24,7 @@ function TodoApp(){
 		SetTasks([]);
 	}
 	function add(e){
+		if(item.trim(" ").length==0) return alert("Enter a valid task");
 		SetTasks([...tasks,item])
 		setItem("")
 		console.log("Item Added Suceesfully!!");
